@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QSsh", "QSsh\src\QSsh.vcxproj", "{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InitNetworkDiskModel", "InitNetworkDiskModel\InitNetworkDiskModel.vcxproj", "{F65D0FFA-7EDE-4E45-BD7D-A2AE01F43497}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B12702AD-ABFB-343A-A199-8E24837244A3} = {B12702AD-ABFB-343A-A199-8E24837244A3}
+		{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6} = {9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SshShell", "SshShell\SshShell.vcxproj", "{B12702AD-ABFB-343A-A199-8E24837244A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6} = {9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}.Debug|x64.ActiveCfg = Debug|x64
+		{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}.Debug|x64.Build.0 = Debug|x64
+		{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}.Release|x64.ActiveCfg = Release|x64
+		{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}.Release|x64.Build.0 = Release|x64
+		{F65D0FFA-7EDE-4E45-BD7D-A2AE01F43497}.Debug|x64.ActiveCfg = Debug|x64
+		{F65D0FFA-7EDE-4E45-BD7D-A2AE01F43497}.Debug|x64.Build.0 = Debug|x64
+		{F65D0FFA-7EDE-4E45-BD7D-A2AE01F43497}.Release|x64.ActiveCfg = Release|x64
+		{F65D0FFA-7EDE-4E45-BD7D-A2AE01F43497}.Release|x64.Build.0 = Release|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.ActiveCfg = Debug|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Debug|x64.Build.0 = Debug|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.ActiveCfg = Release|x64
+		{B12702AD-ABFB-343A-A199-8E24837244A3}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
