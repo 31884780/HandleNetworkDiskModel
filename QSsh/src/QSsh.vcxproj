@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9CA56EB4-A46C-3B84-946F-6592ECE1C5A6}</ProjectGuid>
+    <RootNamespace>QSsh</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <OutputDirectory>..\lib\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>QSsh</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v140</PlatformToolset>
+    <OutputDirectory>..\lib\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>QSshd</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(QtMsBuild)'=='' or !Exists('$(QtMsBuild)\qt.targets')">
+    <QtMsBuild>$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\bin64\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">QSsh</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\bin64\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">QSshd</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;3rdparty;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;release;.;\include;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -EHs -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4290;4250;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>false</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QSSH_LIBRARY;BOTAN_DLL=;BOTAN_TARGET_OS_IS_WINDOWS;BOTAN_TARGET_OS_HAS_LOADLIBRARY;BOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME;BOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK;BOTAN_HAS_DYNAMICALLY_LOADED_ENGINE;BOTAN_HAS_DYNAMIC_LOADER;BOTAN_HAS_ENTROPY_SRC_CAPI;BOTAN_HAS_ENTROPY_SRC_WIN32;BOTAN_HAS_MUTEX_WIN32;BOTAN_BUILD_COMPILER_IS_MSVC;BOTAN_TARGET_OS_HAS_GMTIME_S;_SCL_SECURE_NO_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;user32.lib;$(QTDIR)\lib\Qt5Widgets.lib;$(QTDIR)\lib\Qt5Gui.lib;$(QTDIR)\lib\Qt5Network.lib;$(QTDIR)\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\QSsh.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ImportLibrary>..\..\lib\$(Platform)\$(Configuration)\QSsh.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QSSH_LIBRARY;BOTAN_DLL=;BOTAN_TARGET_OS_IS_WINDOWS;BOTAN_TARGET_OS_HAS_LOADLIBRARY;BOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME;BOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK;BOTAN_HAS_DYNAMICALLY_LOADED_ENGINE;BOTAN_HAS_DYNAMIC_LOADER;BOTAN_HAS_ENTROPY_SRC_CAPI;BOTAN_HAS_ENTROPY_SRC_WIN32;BOTAN_HAS_MUTEX_WIN32;BOTAN_BUILD_COMPILER_IS_MSVC;BOTAN_TARGET_OS_HAS_GMTIME_S;_SCL_SECURE_NO_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;3rdparty;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtNetwork;$(QTDIR)\include\QtCore;debug;.;\include;$(QTDIR)\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -EHs -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4290;4250;4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>false</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QSSH_LIBRARY;BOTAN_DLL=;BOTAN_TARGET_OS_IS_WINDOWS;BOTAN_TARGET_OS_HAS_LOADLIBRARY;BOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME;BOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK;BOTAN_HAS_DYNAMICALLY_LOADED_ENGINE;BOTAN_HAS_DYNAMIC_LOADER;BOTAN_HAS_ENTROPY_SRC_CAPI;BOTAN_HAS_ENTROPY_SRC_WIN32;BOTAN_HAS_MUTEX_WIN32;BOTAN_BUILD_COMPILER_IS_MSVC;BOTAN_TARGET_OS_HAS_GMTIME_S;_SCL_SECURE_NO_WARNINGS;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;user32.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Networkd.lib;$(QTDIR)\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\..\lib\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkDLL>true</LinkDLL>
+      <OutputFile>$(OutDir)\QSshd.dll</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ImportLibrary>..\..\lib\$(Platform)\$(Configuration)\QSshd.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;WIN64;QSSH_LIBRARY;BOTAN_DLL=;BOTAN_TARGET_OS_IS_WINDOWS;BOTAN_TARGET_OS_HAS_LOADLIBRARY;BOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME;BOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK;BOTAN_HAS_DYNAMICALLY_LOADED_ENGINE;BOTAN_HAS_DYNAMIC_LOADER;BOTAN_HAS_ENTROPY_SRC_CAPI;BOTAN_HAS_ENTROPY_SRC_WIN32;BOTAN_HAS_MUTEX_WIN32;BOTAN_BUILD_COMPILER_IS_MSVC;BOTAN_TARGET_OS_HAS_GMTIME_S;_SCL_SECURE_NO_WARNINGS;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="3rdparty\botan\botan.cpp" />
+    <ClCompile Include="sftpchannel.cpp" />
+    <ClCompile Include="sftpdefs.cpp" />
+    <ClCompile Include="sftpfilesystemmodel.cpp" />
+    <ClCompile Include="sftpincomingpacket.cpp" />
+    <ClCompile Include="sftpoperation.cpp" />
+    <ClCompile Include="sftpoutgoingpacket.cpp" />
+    <ClCompile Include="sftppacket.cpp" />
+    <ClCompile Include="sshcapabilities.cpp" />
+    <ClCompile Include="sshchannel.cpp" />
+    <ClCompile Include="sshchannelmanager.cpp" />
+    <ClCompile Include="sshconnection.cpp" />
+    <ClCompile Include="sshconnectionmanager.cpp" />
+    <ClCompile Include="sshcryptofacility.cpp" />
+    <ClCompile Include="sshdirecttcpiptunnel.cpp" />
+    <ClCompile Include="sshhostkeydatabase.cpp" />
+    <ClCompile Include="sshincomingpacket.cpp" />
+    <ClCompile Include="sshinit.cpp" />
+    <ClCompile Include="sshkeycreationdialog.cpp" />
+    <ClCompile Include="sshkeyexchange.cpp" />
+    <ClCompile Include="sshkeygenerator.cpp" />
+    <ClCompile Include="sshkeypasswordretriever.cpp" />
+    <ClCompile Include="sshlogging.cpp" />
+    <ClCompile Include="sshoutgoingpacket.cpp" />
+    <ClCompile Include="sshpacket.cpp" />
+    <ClCompile Include="sshpacketparser.cpp" />
+    <ClCompile Include="sshremoteprocess.cpp" />
+    <ClCompile Include="sshremoteprocessrunner.cpp" />
+    <ClCompile Include="sshsendfacility.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="3rdparty\botan\botan.h" />
+    <CustomBuild Include="sftpchannel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sftpchannel.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sftpchannel.h -o release\moc_sftpchannel.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sftpchannel.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sftpchannel.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sftpchannel.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sftpchannel.h -o debug\moc_sftpchannel.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sftpchannel.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sftpchannel.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sftpchannel_p.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sftpchannel_p.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sftpchannel_p.h -o release\moc_sftpchannel_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sftpchannel_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sftpchannel_p.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sftpchannel_p.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sftpchannel_p.h -o debug\moc_sftpchannel_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sftpchannel_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sftpchannel_p.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="sftpdefs.h" />
+    <CustomBuild Include="sftpfilesystemmodel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sftpfilesystemmodel.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sftpfilesystemmodel.h -o release\moc_sftpfilesystemmodel.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sftpfilesystemmodel.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sftpfilesystemmodel.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sftpfilesystemmodel.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sftpfilesystemmodel.h -o debug\moc_sftpfilesystemmodel.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sftpfilesystemmodel.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sftpfilesystemmodel.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="sftpincomingpacket_p.h" />
+    <ClInclude Include="sftpoperation_p.h" />
+    <ClInclude Include="sftpoutgoingpacket_p.h" />
+    <ClInclude Include="sftppacket_p.h" />
+    <ClInclude Include="ssh_global.h" />
+    <ClInclude Include="sshbotanconversions_p.h" />
+    <ClInclude Include="sshcapabilities_p.h" />
+    <CustomBuild Include="sshchannel_p.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshchannel_p.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshchannel_p.h -o release\moc_sshchannel_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshchannel_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshchannel_p.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshchannel_p.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshchannel_p.h -o debug\moc_sshchannel_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshchannel_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshchannel_p.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sshchannelmanager_p.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshchannelmanager_p.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshchannelmanager_p.h -o release\moc_sshchannelmanager_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshchannelmanager_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshchannelmanager_p.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshchannelmanager_p.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshchannelmanager_p.h -o debug\moc_sshchannelmanager_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshchannelmanager_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshchannelmanager_p.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sshconnection.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshconnection.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshconnection.h -o release\moc_sshconnection.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshconnection.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshconnection.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshconnection.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshconnection.h -o debug\moc_sshconnection.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshconnection.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshconnection.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sshconnection_p.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshconnection_p.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshconnection_p.h -o release\moc_sshconnection_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshconnection_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshconnection_p.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshconnection_p.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshconnection_p.h -o debug\moc_sshconnection_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshconnection_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshconnection_p.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="sshconnectionmanager.h" />
+    <ClInclude Include="sshcryptofacility_p.h" />
+    <CustomBuild Include="sshdirecttcpiptunnel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshdirecttcpiptunnel.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshdirecttcpiptunnel.h -o release\moc_sshdirecttcpiptunnel.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshdirecttcpiptunnel.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshdirecttcpiptunnel.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshdirecttcpiptunnel.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshdirecttcpiptunnel.h -o debug\moc_sshdirecttcpiptunnel.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshdirecttcpiptunnel.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshdirecttcpiptunnel.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sshdirecttcpiptunnel_p.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshdirecttcpiptunnel_p.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshdirecttcpiptunnel_p.h -o release\moc_sshdirecttcpiptunnel_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshdirecttcpiptunnel_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshdirecttcpiptunnel_p.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshdirecttcpiptunnel_p.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshdirecttcpiptunnel_p.h -o debug\moc_sshdirecttcpiptunnel_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshdirecttcpiptunnel_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshdirecttcpiptunnel_p.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="ssherrors.h" />
+    <ClInclude Include="sshexception_p.h" />
+    <ClInclude Include="sshhostkeydatabase.h" />
+    <ClInclude Include="sshincomingpacket_p.h" />
+    <ClInclude Include="sshinit_p.h" />
+    <CustomBuild Include="sshkeycreationdialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshkeycreationdialog.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshkeycreationdialog.h -o release\moc_sshkeycreationdialog.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshkeycreationdialog.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshkeycreationdialog.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshkeycreationdialog.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshkeycreationdialog.h -o debug\moc_sshkeycreationdialog.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshkeycreationdialog.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshkeycreationdialog.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="sshkeyexchange_p.h" />
+    <ClInclude Include="sshkeygenerator.h" />
+    <ClInclude Include="sshkeypasswordretriever_p.h" />
+    <ClInclude Include="sshlogging_p.h" />
+    <ClInclude Include="sshoutgoingpacket_p.h" />
+    <ClInclude Include="sshpacket_p.h" />
+    <ClInclude Include="sshpacketparser_p.h" />
+    <ClInclude Include="sshpseudoterminal.h" />
+    <CustomBuild Include="sshremoteprocess.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshremoteprocess.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshremoteprocess.h -o release\moc_sshremoteprocess.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshremoteprocess.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshremoteprocess.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshremoteprocess.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshremoteprocess.h -o debug\moc_sshremoteprocess.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshremoteprocess.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshremoteprocess.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sshremoteprocess_p.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshremoteprocess_p.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshremoteprocess_p.h -o release\moc_sshremoteprocess_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshremoteprocess_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshremoteprocess_p.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshremoteprocess_p.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshremoteprocess_p.h -o debug\moc_sshremoteprocess_p.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshremoteprocess_p.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshremoteprocess_p.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="sshremoteprocessrunner.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshremoteprocessrunner.h;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshremoteprocessrunner.h -o release\moc_sshremoteprocessrunner.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshremoteprocessrunner.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_sshremoteprocessrunner.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshremoteprocessrunner.h;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshremoteprocessrunner.h -o debug\moc_sshremoteprocessrunner.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshremoteprocessrunner.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_sshremoteprocessrunner.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="sshsendfacility_p.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -wd4251 -wd4290 -wd4250 -Zi -MDd -EHs -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -wd4251 -wd4290 -wd4250 -O2 -MD -EHs -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\moc_predefs.h;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClCompile Include="debug\moc_sftpchannel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sftpchannel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sftpchannel_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sftpchannel_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sftpfilesystemmodel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sftpfilesystemmodel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshchannel_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshchannel_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshchannelmanager_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshchannelmanager_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshconnection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshconnection.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshconnection_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshconnection_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshdirecttcpiptunnel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshdirecttcpiptunnel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshdirecttcpiptunnel_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshdirecttcpiptunnel_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshkeycreationdialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshkeycreationdialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshremoteprocess.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshremoteprocess.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshremoteprocess_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshremoteprocess_p.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_sshremoteprocessrunner.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_sshremoteprocessrunner.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <CustomBuild Include="debug\sshconnectionmanager.moc.cbt">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshconnectionmanager.cpp;debug\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include debug/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshconnectionmanager.cpp -o debug\sshconnectionmanager.moc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MOC sshconnectionmanager.cpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\sshconnectionmanager.moc;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\sshconnectionmanager.moc.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshconnectionmanager.cpp;release\moc_predefs.h;$(QTDIR)\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQSSH_LIBRARY -DBOTAN_DLL= -DBOTAN_TARGET_OS_IS_WINDOWS -DBOTAN_TARGET_OS_HAS_LOADLIBRARY -DBOTAN_TARGET_OS_HAS_WIN32_GET_SYSTEMTIME -DBOTAN_TARGET_OS_HAS_WIN32_VIRTUAL_LOCK -DBOTAN_HAS_DYNAMICALLY_LOADED_ENGINE -DBOTAN_HAS_DYNAMIC_LOADER -DBOTAN_HAS_ENTROPY_SRC_CAPI -DBOTAN_HAS_ENTROPY_SRC_WIN32 -DBOTAN_HAS_MUTEX_WIN32 -DBOTAN_BUILD_COMPILER_IS_MSVC -DBOTAN_TARGET_OS_HAS_GMTIME_S -D_SCL_SECURE_NO_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include release/moc_predefs.h -I$(QTDIR)\mkspecs/win32-msvc -I. -I./3rdparty -I$(QTDIR)\include -I$(QTDIR)\include/QtWidgets -I$(QTDIR)\include/QtGui -I$(QTDIR)\include/QtANGLE -I$(QTDIR)\include/QtNetwork -I$(QTDIR)\include/QtCore -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"D:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10150.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\winrt" sshconnectionmanager.cpp -o release\sshconnectionmanager.moc</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MOC sshconnectionmanager.cpp</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\sshconnectionmanager.moc;%(Outputs)</Outputs>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="ui_sshkeycreationdialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="sshkeycreationdialog.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sshkeycreationdialog.ui;$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe -no-stringliteral sshkeycreationdialog.ui -o ui_sshkeycreationdialog.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UIC sshkeycreationdialog.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ui_sshkeycreationdialog.h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sshkeycreationdialog.ui;$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe -no-stringliteral sshkeycreationdialog.ui -o ui_sshkeycreationdialog.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UIC sshkeycreationdialog.ui</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ui_sshkeycreationdialog.h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" Qt5Version_x0020_x64="5.11.1_64bit" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
